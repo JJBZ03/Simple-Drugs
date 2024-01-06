@@ -43,15 +43,4 @@ public class DrugUseListener implements Listener {
         p.playSound(p.getLocation(), Sound.ITEM_HONEY_BOTTLE_DRINK, 10, 29);
         itemInHand.setAmount(itemInHand.getAmount() - 1);
     }
-
-    @EventHandler
-    public void BlockPlace(BlockPlaceEvent ev) {
-        Player p = ev.getPlayer();
-
-        ItemStack stack = p.getInventory().getItemInMainHand() == null ? p.getInventory().getItemInOffHand() : p.getInventory().getItemInMainHand();
-        boolean isDrug = new Drug().matchDrug(stack) != null;
-        if(isDrug) {
-            ev.setCancelled(true);
-        }
-    }
 }
